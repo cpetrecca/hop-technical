@@ -6,7 +6,7 @@ const KanbanBoard = () => {
   return (
     <center>
       <div className="w-5/6 bg-hop2 my-3 py-2 rounded-lg">
-        <header className="">Tablero Kanban</header>
+        <header className="font-semibold ">Tablero Kanban</header>
         <main className="flex flex-row">
           {kanbanBoardConfig.columns.map((el, index) => {
             return (
