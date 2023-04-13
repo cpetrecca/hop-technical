@@ -1,3 +1,6 @@
-const Modal = ()=>{}
+const Modal = ()=>{
+
+    
+}
 
 export default Modal;

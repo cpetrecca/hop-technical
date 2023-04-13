@@ -1,7 +1,13 @@
+export enum KanbanStates{
+  "TODO",
+  "DOING",
+  "DONE",
+}
+
 export const kanbanBoardConfig = {
   columns: [
-    { title: "Sin realizar" },
-    { title: "En proceso" },
-    { title: "Realizar" },
+    { id: KanbanStates.TODO, title: "Sin realizar" },
+    { id: KanbanStates.DOING, title: "En proceso" },
+    { id: KanbanStates.DONE, title: "Realizado" },
   ],
 };
