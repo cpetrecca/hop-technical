@@ -1,46 +1,30 @@
-# Getting Started with Create React App
+# HOP Ejercicio Tecnico
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Author
+Cristian Petrecca
 
-## Available Scripts
+## El ejercicio
+Realizar un  tablero Kanban de tres columnas: Sin realizar - En proceso - Realizado.
+- Se deben poder crear tareas. Las tareas poseen solamente una descripción.
+- Las tareas se deben poder mover entre las columnas (con drag and drop o un botón).
+- No es necesaria la persistencia de dichas tareas.
 
-In the project directory, you can run:
+## Planificacion a Realizacion
+Boilerplate creado con create-react-app con typescript template. 
+Vamos a utilizar Tailwind como utility-first CSS framework instalado como dev dep.
+Vamos a utilizar un config para hacer dinamica la cantidad de columnas y que el flow sea escalable.
+Algunos test unitarios porque nunca estan de mas pero seran mantenido al minimo ya que no son pedidos.
+Implementaremos drag and drop ya que es la UX esperada para este tipo de apps.
+Creacion de tareas por formulario, display en modal usando usePortal hook.
+Para mantener el codigo mas limpio y modularizado vamos a manejar la logica de las tareas usando un custom hook.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Correr la app bajando de repositorio git y correr en ambiente local
+1-Clonar Repositorio
+2- ejecutar npm install para instalar dependencias necesarias
+3- ejecutar npm start para que corra en http://localhost:3000/
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Live URL
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+...
