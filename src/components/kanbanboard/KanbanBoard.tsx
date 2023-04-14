@@ -7,7 +7,7 @@ import Button from "../ui/Button";
 import { Task } from "../../config/kanbanboard-config";
 
 const KanbanBoard = () => {
-  const { tasks, createTask } = useKanbanTasks();
+  const { tasks, createTask, error, resetError } = useKanbanTasks();
   const [showCreateModal, setShowCreateModal] = useState(false);
 
   const showModalToggleHandler = () => {
@@ -19,7 +19,7 @@ const KanbanBoard = () => {
 
   return (
     <center>
-      <CreateTaskForm onSubmit={createTask}></CreateTaskForm>
+      <CreateTaskForm onSubmit={createTask} error={error} resetError={resetError}></CreateTaskForm>
       <div className="w-5/6 bg-hop2 my-3 py-2 rounded-lg border-black ">
         <header className="font-semibold flex flex-row  justify-between px-10 my-2">
           <p>Tablero Kanban</p>

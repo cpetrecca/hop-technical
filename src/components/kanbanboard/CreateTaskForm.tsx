@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   kanbanBoardConfig,
   KanbanStates,
@@ -7,17 +7,30 @@ import Button from "../ui/Button";
 
 type Props = {
   onSubmit: Function;
+  error: string;
+  resetError: Function;
 };
 
 const INITIAL_STATE = KanbanStates.TODO;
 
-const CreateTaskForm: React.FC<Props> = ({ onSubmit }) => {
+const CreateTaskForm: React.FC<Props> = ({ onSubmit, error, resetError }) => {
   const [taskText, setTaskText] = useState("");
   const [taskState, setTaskState] = useState(INITIAL_STATE);
+  const [taskFormError, setTaskFormError] = useState("");
+
+  useEffect(() => {
+    setTaskFormError(error);
+  }, [error]);
 
   const onAddHandler = () => {
-    onSubmit({ text: taskText, state: taskState });
-    resetForm();
+    if (taskText == "") {
+      setTaskFormError("No puede cargar una tarea sin texto.");
+    } else {
+      onSubmit({ text: taskText, state: taskState });
+      if (taskFormError !== "") {
+        resetForm();
+      }
+    }
   };
 
   const onCancelHandler = () => {
@@ -27,8 +40,9 @@ const CreateTaskForm: React.FC<Props> = ({ onSubmit }) => {
   const resetForm = () => {
     setTaskText("");
     setTaskState(INITIAL_STATE);
+    setTaskFormError("");
+    resetError();
   };
-
   return (
     <form className="w-[50%] bg-slate-300 flex flex-col p-5 gap-2">
       <label htmlFor="taskText">Añadir Tarea:</label>
@@ -54,6 +68,7 @@ const CreateTaskForm: React.FC<Props> = ({ onSubmit }) => {
         value="Añadir Tarea"
       ></Button>
       <Button callBack={onCancelHandler} style="red" value="Cancelar"></Button>
+      {taskFormError !== "" && <p className="text-red-600">{taskFormError}</p>}
     </form>
   );
 };
