@@ -14,11 +14,12 @@ const KanbanBoard = () => {
     setShowCreateModal((prev) => !prev);
   };
 
+
   const columnsWidth = `w-1/${kanbanBoardConfig.columns.length}`;
 
   return (
     <center>
-      <CreateTaskForm></CreateTaskForm>
+      <CreateTaskForm onSubmit={createTask}></CreateTaskForm>
       <div className="w-5/6 bg-hop2 my-3 py-2 rounded-lg border-black ">
         <header className="font-semibold flex flex-row  justify-between px-10 my-2">
           <p>Tablero Kanban</p>

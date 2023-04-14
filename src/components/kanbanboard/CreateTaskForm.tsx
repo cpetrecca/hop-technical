@@ -5,17 +5,28 @@ import {
 } from "../../config/kanbanboard-config";
 import Button from "../ui/Button";
 
+type Props = {
+  onSubmit: Function;
+};
 
-const CreateTaskForm = () => {
-  const [task, setTask] = useState("");
-  const [taskState, setTaskState] = useState(KanbanStates.TODO);
+const INITIAL_STATE = KanbanStates.TODO;
+
+const CreateTaskForm: React.FC<Props> = ({ onSubmit }) => {
+  const [taskText, setTaskText] = useState("");
+  const [taskState, setTaskState] = useState(INITIAL_STATE);
 
   const onAddHandler = () => {
-
+    onSubmit({ text: taskText, state: taskState });
+    resetForm();
   };
 
   const onCancelHandler = () => {
-    
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setTaskText("");
+    setTaskState(INITIAL_STATE);
   };
 
   return (
@@ -24,11 +35,11 @@ const CreateTaskForm = () => {
       <input
         type="text"
         id="taskText"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
+        value={taskText}
+        onChange={(e) => setTaskText(e.target.value)}
         required
       ></input>
-      <select  onChange={(e) => setTaskState(+e.target.value)}>
+      <select value={taskState} onChange={(e) => setTaskState(+e.target.value)}>
         {kanbanBoardConfig.columns.map((el) => {
           return (
             <option key={el.id} value={el.id}>
@@ -42,11 +53,7 @@ const CreateTaskForm = () => {
         style="green"
         value="Añadir Tarea"
       ></Button>
-      <Button
-        callBack={onCancelHandler}
-        style="red"
-        value="Cancelar"
-      ></Button>
+      <Button callBack={onCancelHandler} style="red" value="Cancelar"></Button>
     </form>
   );
 };

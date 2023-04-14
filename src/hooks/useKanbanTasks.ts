@@ -23,6 +23,7 @@ function tasksReducer(tasks:Task[], action: TaskAction) {
   const { type, payload } = action;  
   switch (type) {
     case TaskActionKind.CREATE:
+        console.log(payload);
       return [...tasks, {text:payload!.text, state:payload!.state }];
     case TaskActionKind.MOVE:
       return [];
@@ -39,10 +40,9 @@ const useKanbanTasks = () => {
     setError("");
   }
 
-  const createTask=(text:string, state:KanbanStates)=>{
-    dispatch({type:TaskActionKind.CREATE, payload:{text:text, state:state}});
+  const createTask=(task:Task)=>{
+    dispatch({type:TaskActionKind.CREATE, payload:task});
   }
-
   return {error:{error}, tasks, resetError, createTask}
 };
 
