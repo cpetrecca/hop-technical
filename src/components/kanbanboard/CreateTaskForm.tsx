@@ -9,11 +9,12 @@ type Props = {
   onSubmit: Function;
   error: string;
   resetError: Function;
+  onCancel:Function;
 };
 
 const INITIAL_STATE = KanbanStates.TODO;
 
-const CreateTaskForm: React.FC<Props> = ({ onSubmit, error, resetError }) => {
+const CreateTaskForm: React.FC<Props> = ({ onSubmit, error, resetError, onCancel }) => {
   const [taskText, setTaskText] = useState("");
   const [taskState, setTaskState] = useState(INITIAL_STATE);
   const [taskFormError, setTaskFormError] = useState("");
@@ -35,6 +36,7 @@ const CreateTaskForm: React.FC<Props> = ({ onSubmit, error, resetError }) => {
 
   const onCancelHandler = () => {
     resetForm();
+    onCancel();
   };
 
   const resetForm = () => {

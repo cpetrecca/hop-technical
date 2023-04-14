@@ -37,7 +37,6 @@ const useKanbanTasks = () => {
   const [error, setError] = useState("");
 
   const resetError = () => {
-    console.log("resete");
     setError("");
   };
 
@@ -53,15 +52,12 @@ const useKanbanTasks = () => {
 
   const createTask = (task: Task) => {
     if (repeatedTask(task)) {
-
-      setError(prev=>"Esta tarea ya ha sido cargada");
-      console.log("error");
+      setError((prev) => "Esta tarea ya ha sido cargada");
     } else {
       dispatch({ type: TaskActionKind.CREATE, payload: task });
     }
   };
-  console.log(error);
-  return { error , tasks, resetError, createTask };
+  return { error, tasks, resetError, createTask };
 };
 
 export default useKanbanTasks;
