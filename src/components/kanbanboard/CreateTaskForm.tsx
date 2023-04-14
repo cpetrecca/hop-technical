@@ -28,8 +28,10 @@ const CreateTaskForm: React.FC<Props> = ({ onSubmit, error, resetError, onCancel
       setTaskFormError("No puede cargar una tarea sin texto.");
     } else {
       onSubmit({ text: taskText, state: taskState });
-      if (taskFormError !== "") {
+      console.log(taskFormError);
+      if (taskFormError == "") {
         resetForm();
+        onCancel();
       }
     }
   };
