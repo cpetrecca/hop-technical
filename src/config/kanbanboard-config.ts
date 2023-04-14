@@ -2,6 +2,7 @@ export enum KanbanStates{
   "TODO",
   "DOING",
   "DONE",
+  "DONE2",
 }
 
 export const kanbanBoardConfig = {

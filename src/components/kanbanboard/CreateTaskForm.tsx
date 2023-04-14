@@ -1,19 +1,21 @@
+import { useState } from "react";
 import {
   kanbanBoardConfig,
   KanbanStates,
 } from "../../config/kanbanboard-config";
-import { useState } from "react";
+import Button from "../ui/Button";
+
 
 const CreateTaskForm = () => {
   const [task, setTask] = useState("");
   const [taskState, setTaskState] = useState(KanbanStates.TODO);
 
-  const onAdd = (e: React.FormEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const onAddHandler = () => {
+
   };
 
-  const onCancel = (e: any) => {
-    e.preventDefault();
+  const onCancelHandler = () => {
+    
   };
 
   return (
@@ -35,18 +37,16 @@ const CreateTaskForm = () => {
           );
         })}
       </select>
-      <input
-        onClick={onAdd}
-        className="bg-green-800 rounded-full p-2 text-sm border hover:bg-green-700 active:border-black"
-        type="submit"
+      <Button
+        callBack={onAddHandler}
+        style="green"
         value="Añadir Tarea"
-      ></input>
-      <button
-        onClick={onCancel}
-        className="bg-red-800 rounded-full p-2 text-sm border hover:bg-red-700 active:border-black"
-      >
-        Cancelar
-      </button>
+      ></Button>
+      <Button
+        callBack={onCancelHandler}
+        style="red"
+        value="Cancelar"
+      ></Button>
     </form>
   );
 };
