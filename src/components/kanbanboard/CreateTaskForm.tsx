@@ -29,7 +29,7 @@ const CreateTaskForm: React.FC<Props> = ({ onSubmit, error, resetError, onCancel
     } else {
       onSubmit({ text: taskText, state: taskState });
       console.log(taskFormError);
-      if (taskFormError == "") {
+      if (taskFormError === "") {
         resetForm();
         onCancel();
       }

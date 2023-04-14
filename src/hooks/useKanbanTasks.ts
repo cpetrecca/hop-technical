@@ -26,7 +26,13 @@ function tasksReducer(tasks: Task[], action: TaskAction) {
     case TaskActionKind.CREATE:
       return [...tasks, { text: payload!.text, state: payload!.state }];
     case TaskActionKind.MOVE:
-      return [];
+      const editedTasks = tasks.map((task) => {
+        if (task.text === payload!.text) {
+            return {text:task.text, state:+payload!.state}
+        }
+        else return task;
+      });
+      return [...editedTasks];
     default:
       return tasks;
   }
@@ -57,7 +63,15 @@ const useKanbanTasks = () => {
       dispatch({ type: TaskActionKind.CREATE, payload: task });
     }
   };
-  return { error, tasks, resetError, createTask };
+
+  const changeTaskState = (taskText: string, state: number) => {
+    dispatch({
+      type: TaskActionKind.MOVE,
+      payload: { text: taskText, state: state },
+    });
+  };
+
+  return { error, tasks, resetError, createTask, changeTaskState };
 };
 
 export default useKanbanTasks;

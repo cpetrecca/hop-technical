@@ -1,18 +1,36 @@
 import { useState } from "react";
 import ReactDOM from "react-dom";
-import { kanbanBoardConfig } from "../../config/kanbanboard-config";
 import BoardColumn from "./BoardColumn";
 import CreateTaskForm from "./CreateTaskForm";
 import useKanbanTasks from "../../hooks/useKanbanTasks";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
-import { Task } from "../../config/kanbanboard-config";
+import { Task, kanbanBoardConfig } from "../../config/kanbanboard-config";
 
 const domElement = document.getElementById("modal");
 
 const KanbanBoard = () => {
-  const { tasks, createTask, error, resetError } = useKanbanTasks();
+  const { tasks, createTask, error, resetError, changeTaskState } = useKanbanTasks();
   const [showCreateModal, setShowCreateModal] = useState(false);
+
+  const [isDragging, setIsDragging]=useState(false);
+  const [draggedTask, setDraggedTask]=useState<string>("")
+
+
+  const draggingHandler=(e:any)=>{
+    const taskText=e.target.innerText;
+    const dragging=e.type==="dragstart"?true:false;
+    setIsDragging(dragging);
+    setDraggedTask(taskText);
+  }
+
+  const onDropHandler=(e:any)=>{
+    const newState=e.currentTarget.id;
+    changeTaskState(draggedTask, newState);
+    setIsDragging(false);
+    setDraggedTask("");
+  }
+
 
   const showModalToggleHandler = () => {
     setShowCreateModal((prev) => !prev);
@@ -43,15 +61,19 @@ const KanbanBoard = () => {
             ></Button>
           </header>
           <main className="flex flex-row">
-            {kanbanBoardConfig.columns.map((column, index) => {
+            {kanbanBoardConfig.columns.map((column) => {
               let tasksFilteredByColumn: Task[] = [];
               tasks.forEach((task) => {
                 if (task.state === column.id) tasksFilteredByColumn.push(task);
               });
               return (
                 <BoardColumn
+                  onDrop={onDropHandler}
+                  isDragging={isDragging}
+                  onDragging={draggingHandler}
                   tasks={tasksFilteredByColumn}
-                  key={index}
+                  key={column.id}  
+                  columnId={column.id}         
                   title={column.title}
                   width={columnsWidth}
                 ></BoardColumn>
