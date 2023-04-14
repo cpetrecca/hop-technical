@@ -18,10 +18,6 @@ interface TaskAction {
   payload?: Task;
 }
 
-const repeatedTask = (task: Task) => {
-  let isRepeated = false;
-};
-
 const initialState: Task[] = [...DUMMY_DATA];
 
 function tasksReducer(tasks: Task[], action: TaskAction) {

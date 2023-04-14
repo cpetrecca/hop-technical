@@ -1,12 +1,12 @@
 type Props = {
-  style: "green" | "red";
+    styled: "green" | "red";
   value: string;
   callBack?: Function;
 };
 
-const Button: React.FC<Props> = ({ style, value, callBack = () => {} }) => {
+const Button: React.FC<Props> = ({ styled, value, callBack = () => {} }) => {
   const buttonStyle =
-    style === "green"
+    styled === "green"
       ? "bg-green-800 rounded-full p-2 text-sm border hover:bg-green-700 active:border-black"
       : "bg-red-800 rounded-full p-2 text-sm border hover:bg-red-700 active:border-black";
 

@@ -25,7 +25,7 @@ const KanbanBoard = () => {
           <p>Tablero Kanban</p>
           <Button
             callBack={showModalToggleHandler}
-            style="green"
+            styled="green"
             value="+ Añadir"
           ></Button>
         </header>
@@ -33,7 +33,7 @@ const KanbanBoard = () => {
           {kanbanBoardConfig.columns.map((column, index) => {
             let tasksFilteredByColumn: Task[] = [];
             tasks.forEach((task) => {
-              if (task.state == column.id) tasksFilteredByColumn.push(task);
+              if (task.state === column.id) tasksFilteredByColumn.push(task);
             });
             return (
               <BoardColumn

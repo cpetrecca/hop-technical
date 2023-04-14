@@ -23,7 +23,7 @@ const CreateTaskForm: React.FC<Props> = ({ onSubmit, error, resetError }) => {
   }, [error]);
 
   const onAddHandler = () => {
-    if (taskText == "") {
+    if (taskText === "") {
       setTaskFormError("No puede cargar una tarea sin texto.");
     } else {
       onSubmit({ text: taskText, state: taskState });
@@ -64,10 +64,10 @@ const CreateTaskForm: React.FC<Props> = ({ onSubmit, error, resetError }) => {
       </select>
       <Button
         callBack={onAddHandler}
-        style="green"
+        styled="green"
         value="Añadir Tarea"
       ></Button>
-      <Button callBack={onCancelHandler} style="red" value="Cancelar"></Button>
+      <Button callBack={onCancelHandler} styled="red" value="Cancelar"></Button>
       {taskFormError !== "" && <p className="text-red-600">{taskFormError}</p>}
     </form>
   );
