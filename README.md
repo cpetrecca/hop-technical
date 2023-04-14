@@ -23,6 +23,7 @@ Realizar un  tablero Kanban de tres columnas: Sin realizar - En proceso - Realiz
 - Asi y todo no hice espacio para hacer pruebas unitarias de componenntes ni funcionales de hook usando hooks testing library
 - Teniendo en cuenta casos de uso hubiese hecho las tareas en un store de contextApi para evitar.
 - Cree alguna dummy data para que se inicialice con algo cargado.
+- De querer dedicarle mas tiempo y que no se haya hecho viernes a la tarde tan pronto hubiese pasado absolutamente todas las strings del codigo como titulos y tal al config.
 - Me diverti.
 
 
@@ -33,5 +34,7 @@ Realizar un  tablero Kanban de tres columnas: Sin realizar - En proceso - Realiz
 
 
 ## Live URL
+Subido a una maquina virtual que deberia darse de baja el mes que viene, no esta seteado y le faltan algunos retoques de estilos para que el build sea optimo... pero esta.
+http://burocros.com.ar/
 
-...
+PS:nunca le saque los SSL

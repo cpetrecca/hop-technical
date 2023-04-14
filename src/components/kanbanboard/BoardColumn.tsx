@@ -21,9 +21,10 @@ const BoardColumn: React.FC<Props> = ({
   onDrop,
 }) => {
   const bgStyles = isDragging ? "bg-gray-800" : "bg-hop3";
-  const columnStyles = `${bgStyles} ${width} mx-1 h-200 rounded-md overflow-hidden border`;
+  const columnStyles = `${bgStyles} w-[30%] mx-1 h-200 rounded-md overflow-hidden border min-w-[150px]`;
   return (
     <div
+
       className={columnStyles}
       id={"" + columnId}
       onDrop={onDrop}
@@ -33,7 +34,7 @@ const BoardColumn: React.FC<Props> = ({
       }}
     >
       <header className="bg-slate-600 ">{title}</header>
-      <main className="min-h-[300px]">
+      <main className="min-h-[300px] ">
         {tasks.map((task: Task) => {
           return (
             <TaskBox onDragging={onDragging} key={task.text} text={task.text} />
