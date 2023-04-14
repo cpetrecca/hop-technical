@@ -2,7 +2,6 @@ export enum KanbanStates{
   "TODO",
   "DOING",
   "DONE",
-  "DONE2",
 }
 
 export const kanbanBoardConfig = {
@@ -12,3 +11,8 @@ export const kanbanBoardConfig = {
     { id: KanbanStates.DONE, title: "Realizado" },
   ],
 };
+
+export type Task ={
+    text:string,
+    state:KanbanStates
+}

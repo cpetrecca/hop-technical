@@ -1,10 +1,11 @@
 import { useReducer, useState } from "react";
-import { KanbanStates } from "../config/kanbanboard-config";
+import { KanbanStates, Task } from "../config/kanbanboard-config";
 
-type Task = {
-  text: string;
-  state: KanbanStates;
-};
+
+const DUMMY_DATA=[
+    {text:"Ir al espacio", state:0}, {text:"Ir al sotano", state:0}, {text:"Ir al baño", state:1}, {text:"Ir a marte", state:2}
+  ]
+
 
 enum TaskActionKind {
   CREATE,
@@ -13,10 +14,10 @@ enum TaskActionKind {
 
 interface TaskAction {
   type: TaskActionKind;
-  payload?: {text:string, state:KanbanStates};
+  payload?: Task;
 }
 
-const initialState: Task[] = [];
+const initialState: Task[] = [...DUMMY_DATA];
 
 function tasksReducer(tasks:Task[], action: TaskAction) {
   const { type, payload } = action;  

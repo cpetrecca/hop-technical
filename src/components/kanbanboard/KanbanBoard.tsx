@@ -4,6 +4,7 @@ import BoardColumn from "./BoardColumn";
 import CreateTaskForm from "./CreateTaskForm";
 import useKanbanTasks from "../../hooks/useKanbanTasks";
 import Button from "../ui/Button";
+import { Task } from "../../config/kanbanboard-config";
 
 const KanbanBoard = () => {
   const { tasks, createTask } = useKanbanTasks();
@@ -14,6 +15,7 @@ const KanbanBoard = () => {
   };
 
   const columnsWidth = `w-1/${kanbanBoardConfig.columns.length}`;
+
   return (
     <center>
       <CreateTaskForm></CreateTaskForm>
@@ -28,8 +30,13 @@ const KanbanBoard = () => {
         </header>
         <main className="flex flex-row">
           {kanbanBoardConfig.columns.map((column, index) => {
+            let tasksFilteredByColumn: Task[] = [];
+            tasks.forEach((task) => {
+              if (task.state == column.id) tasksFilteredByColumn.push(task);
+            });
             return (
               <BoardColumn
+                tasks={tasksFilteredByColumn}
                 key={index}
                 title={column.title}
                 width={columnsWidth}
