@@ -60,7 +60,7 @@ const KanbanBoard = () => {
               value="+ Añadir"
             ></Button>
           </header>
-          <main className="flex flex-row px-5 w-[100%] justify-between">
+          <main className="flex flex-row px-5 w-[100%]  justify-between">
             {kanbanBoardConfig.columns.map((column) => {
               let tasksFilteredByColumn: Task[] = [];
               tasks.forEach((task) => {

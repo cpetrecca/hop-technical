@@ -20,11 +20,12 @@ const BoardColumn: React.FC<Props> = ({
   isDragging,
   onDrop,
 }) => {
+  //making classes for tailwind compilance
+  const widthForTailwind = ["w-1/3", "w-1/4", "w-1/5", "w-1/6"];
   const bgStyles = isDragging ? "bg-gray-800" : "bg-hop3";
-  const columnStyles = `${bgStyles} w-[30%] mx-1 h-200 rounded-md overflow-hidden border min-w-[150px]`;
+  const columnStyles = `${bgStyles} ${width}  min-h-[80%] rounded-md mx-2 overflow-hidden border`;
   return (
     <div
-
       className={columnStyles}
       id={"" + columnId}
       onDrop={onDrop}
